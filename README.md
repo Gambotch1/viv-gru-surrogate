@@ -55,8 +55,8 @@ plotting/*.py        thesis figures from the saved results (no retraining)
 
 Two extra pieces are only used for the bridge:
 
-- **Rollout-informed refinement** (Sec. 6.6.1): `train_rollout.py`, using the differentiable loop in `rollout_training.py`.
-- **Residual forcing test** (Sec. 6.6.2): `build_pooled_tf_residual.py` → `coupled_inference.py --residual_npz` → `plotting/summarize_stochastic_closure.py` → `plotting/plot_stochastic_closure_figures.py`.
+- **Rollout-informed refinement**: `train_rollout.py`, using the differentiable loop in `rollout_training.py`.
+- **Residual forcing test**: `build_pooled_tf_residual.py` → `coupled_inference.py --residual_npz` → `plotting/summarize_stochastic_closure.py` → `plotting/plot_stochastic_closure_figures.py`.
 
 Two self-contained studies live in `studies/`:
 
@@ -198,7 +198,7 @@ Useful options: `--handoff_offset` (start later in the CFD record), `--run_repla
 - **Energy per cycle** E_f = ∮ C_L ḣ dt and the lift–velocity phase.
 - **Pass** = stationary limit cycle and amplitude error ≤ 20 % against CFD.
 
-For the bridge, most CFD cases never reach a steady limit cycle. Run `PYTHONPATH=src python -m viv_analysis.reference_quality` once to classify the CFD cases (`results/bridge_reference_status.csv`); the bridge figures then compare amplitudes only where the CFD reference is a settled limit cycle (Sec. 4.7).
+For the bridge, most CFD cases never reach a steady limit cycle. Run `PYTHONPATH=src python -m viv_analysis.reference_quality` once to classify the CFD cases (`results/bridge_reference_status.csv`); the bridge figures then compare amplitudes only where the CFD reference is a settled limit cycle.
 
 ### 6.4 Bridge only: rollout refinement — `train_rollout.py`
 
@@ -285,15 +285,11 @@ Several thesis runs were made from a working copy with uncommitted changes (`git
 
 ## 11. Known limitations and open problems
 
-From the thesis (Sec. 7.4–7.5):
+From the thesis:
 
 - **The bridge coupled response decays** although the open-loop prediction is accurate. Small errors in the lift–velocity phase reverse the aerodynamic work (Sec. 6.5). The rollout refinement and the residual forcing did not fix this.
 - **Aerodynamic state.** The GRU only sees the structural motion. A low-dimensional wake state (e.g. from POD of the flow field) could let it follow the flow memory.
 - **Curriculum learning.** The refinement used a 0.5 s rollout; the coupled assessment runs for about 90 structural periods. Training should move gradually from one-step to multi-cycle rollouts. A prototype period-based curriculum driver exists in the archived repository (tag `curriculum-prototype`, file `src/viv_analysis/train_rollout.py`).
-- **Time-varying Ur has no CFD counterpart.** The history dependence seen in Sec. 5.7 cannot be confirmed as physical hysteresis without CFD runs with the same velocity schedule.
+- **Time-varying Ur has no CFD counterpart.** The history dependence cannot be confirmed as physical hysteresis without CFD runs with the same velocity schedule.
 - **Two degrees of freedom.** Extending to heave and pitch needs a C_M prediction and coupled structural modes.
 
-In the code:
-
-- The closed-loop state arrays in `run_coupled_viv` are float32. A test with a forced linear oscillator showed about 1 % amplitude difference against float64 over 80 000 steps. This has not yet been checked on a real coupled run.
-- `studies/cylinder_time_varying_ur/scripts/time_varying_coupled.py` contains its own copy of the coupled loop (tested to match `run_coupled_viv` for constant Ur). A change to one of the two loops has to be made in both.
