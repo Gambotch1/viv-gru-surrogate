@@ -1,0 +1,28 @@
+{
+  "_description": "Stage 1: architecture sensitivity grid. H = hidden_size, L = num_layers. Trained from scratch for both datasets, at each dataset's existing baseline history duration, under 3 seeds each.",
+  "hidden_sizes": [32, 64, 128],
+  "num_layers": [1, 2],
+  "seeds": [123, 456, 789],
+  "datasets": ["cylinder200", "bridge"],
+  "baseline": {"hidden_size": 64, "num_layers": 2},
+  "fixed_hyperparameters": {
+    "dropout": 0.1,
+    "lr": 1e-3,
+    "weight_decay": 1e-5,
+    "batch_size": 512,
+    "n_epochs": 100,
+    "patience": 15,
+    "scheduler": {"type": "ReduceLROnPlateau", "mode": "min", "factor": 0.5, "patience": 5},
+    "grad_clip_max_norm": 1.0,
+    "noise_std": 0.0,
+    "input_cols": ["disp", "vel"],
+    "nd_inputs": true,
+    "use_ur_context": true,
+    "acc_present": false
+  },
+  "dataset_history": {
+    "cylinder200": {"seq_len": 1000, "stride_train": 8, "dt": 0.005, "duration_s": 5.0},
+    "bridge": {"seq_len": 2500, "stride_train": 5, "dt": 0.002, "duration_s": 5.0}
+  },
+  "note_dropout_single_layer": "torch.nn.GRU only applies inter-layer dropout when num_layers > 1; VIV_GRU (src/viv_analysis/models/gru.py) already passes dropout=0.0 whenever num_layers==1, so every L=1 architecture in this grid trains with dropout inactive regardless of the 'dropout':0.1 fixed value above."
+}

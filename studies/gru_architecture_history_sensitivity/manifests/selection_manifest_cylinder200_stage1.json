@@ -1,0 +1,27 @@
+{
+  "frozen": true,
+  "selection_complete": false,
+  "dataset": "cylinder200",
+  "stage": 1,
+  "git_commit": "914e6860212727b23e48f5078d7a4c8c3d86d1c8",
+  "selected_configuration": {
+    "hidden_size": 64,
+    "num_layers": 2
+  },
+  "hierarchical_rank": 1,
+  "selection_basis": "validation partition only (open-loop retention gate + full-duration closed-loop ranking); see pareto csv",
+  "pareto_csv": "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/reports/pareto_cylinder200_stage1.csv",
+  "selected_run_dirs": [
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/cylinder200/stage1/H64_L2_seq1000_seed123",
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/cylinder200/stage1/H64_L2_seq1000_seed456",
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/cylinder200/stage1/H64_L2_seq1000_seed789"
+  ],
+  "seeds": [
+    123,
+    456,
+    789
+  ],
+  "review_flags": [
+    "Baseline (H64,L2) open-loop val R2 IQR across seeds (0.0147) exceeds the retention threshold magnitude (0.005) -- seed noise in the baseline itself is comparable to the gate. Treat rejections/acceptances near the boundary as unreliable."
+  ]
+}

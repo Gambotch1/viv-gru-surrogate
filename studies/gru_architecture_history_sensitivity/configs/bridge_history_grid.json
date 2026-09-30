@@ -1,0 +1,20 @@
+{
+  "_description": "Stage 2: bridge history-length sensitivity grid. fn = 0.32 Hz, Tn = 1/fn = 3.125s. Effective ML timestep dt = 0.002s (config['bridge_downsample']=20 applied to the raw CFD sampling rate; verified empirically against an existing coupled-loop npz's t-array spacing, mean dt=0.0019989s, i.e. 0.002s to within float roundoff). exact_duration_s = seq_len * dt is the value to report everywhere -- nominal_duration_s (Tn multiples) is NOT exactly representable at dt=0.002s and must never be substituted for it.",
+  "dataset": "bridge",
+  "dt": 0.002,
+  "fn": 0.32,
+  "Tn_s": 3.125,
+  "seeds": [123, 456, 789],
+  "history_points": [
+    {"label": "0.5Tn",     "seq_len": 781,  "nominal_duration_s": 1.5625, "exact_duration_s": 1.562},
+    {"label": "1Tn",       "seq_len": 1563, "nominal_duration_s": 3.125,  "exact_duration_s": 3.126},
+    {"label": "baseline",  "seq_len": 2500, "nominal_duration_s": 5.0,    "exact_duration_s": 5.0},
+    {"label": "2Tn",       "seq_len": 3125, "nominal_duration_s": 6.25,   "exact_duration_s": 6.25},
+    {"label": "4Tn",       "seq_len": 6250, "nominal_duration_s": 12.5,   "exact_duration_s": 12.5}
+  ],
+  "not_yet_tested": [
+    {"label": "4Tn_x2_placeholder", "seq_len": 12500, "nominal_duration_s": 25.0, "exact_duration_s": 25.0,
+     "note": "20s-scale bridge history. Disabled per instructions -- only add once 4Tn (12.5s, exact_duration_s=12.5) is evaluated and shown to still be improving validation closed-loop behavior."}
+  ],
+  "architecture_source": "manifests/study_manifest.json:selected_architecture.bridge (Stage 1 winner; frozen before Stage 2 job generation)"
+}

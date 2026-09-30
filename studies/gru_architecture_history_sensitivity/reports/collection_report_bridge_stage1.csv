@@ -1,0 +1,7 @@
+Dataset,Hidden size,Layers,Parameters,Open-loop R2 median[IQR],Stable runs,Closed-loop amplitude error median[IQR],Worst error
+bridge,32,1,4641,0.999 [0.000],n/a,n/a,n/a
+bridge,32,2,10977,0.999 [0.001],n/a,n/a,n/a
+bridge,64,1,15361,0.999 [0.000],n/a,n/a,n/a
+bridge,64,2,40321,0.999 [0.000],n/a,n/a,n/a
+bridge,128,1,55233,0.998 [0.001],n/a,n/a,n/a
+bridge,128,2,154305,0.997 [0.001],n/a,n/a,n/a

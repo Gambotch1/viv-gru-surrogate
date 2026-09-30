@@ -1,0 +1,27 @@
+{
+  "frozen": true,
+  "selection_complete": false,
+  "dataset": "bridge",
+  "stage": 1,
+  "git_commit": "914e6860212727b23e48f5078d7a4c8c3d86d1c8",
+  "selected_configuration": {
+    "hidden_size": 128,
+    "num_layers": 2
+  },
+  "hierarchical_rank": 1,
+  "selection_basis": "validation partition only (open-loop retention gate + full-duration closed-loop ranking); see pareto csv",
+  "pareto_csv": "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/reports/pareto_bridge_stage1.csv",
+  "selected_run_dirs": [
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/bridge/stage1/H128_L2_seq2500_seed123",
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/bridge/stage1/H128_L2_seq2500_seed456",
+    "/scratch/jote9827/Github/Cylinder/studies/gru_architecture_history_sensitivity/results/bridge/stage1/H128_L2_seq2500_seed789"
+  ],
+  "seeds": [
+    123,
+    456,
+    789
+  ],
+  "review_flags": [
+    "EVERY candidate satisfies delta_R2_val >= -0.005 -- the threshold is not discriminating between architectures here; open-loop retention alone will not drive the ranking."
+  ]
+}

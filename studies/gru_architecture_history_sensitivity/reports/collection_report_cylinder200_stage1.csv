@@ -1,0 +1,7 @@
+Dataset,Hidden size,Layers,Parameters,Open-loop R2 median[IQR],Stable runs,Closed-loop amplitude error median[IQR],Worst error
+cylinder200,32,1,4641,0.933 [0.004],4/4,2.087 [0.855],3.918
+cylinder200,32,2,10977,0.935 [0.017],4/4,0.157 [0.091],2.648
+cylinder200,64,1,15361,0.932 [0.004],4/4,0.675 [0.745],3.367
+cylinder200,64,2,40321,0.978 [0.015],4/4,0.087 [0.042],0.287
+cylinder200,128,1,55233,0.933 [0.004],4/4,1.714 [0.326],2.583
+cylinder200,128,2,154305,0.992 [0.029],4/4,0.095 [0.018],0.961

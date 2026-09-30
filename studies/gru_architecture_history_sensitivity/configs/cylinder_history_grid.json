@@ -1,0 +1,19 @@
+{
+  "_description": "Stage 2: cylinder200 history-length sensitivity grid. fn = 0.2 Hz (cylinder200_fn), Tn = 1/fn = 5.0s, dt = 0.005s (cylinder200_dt). Samples = round(duration_s / dt); duration_s is recomputed from samples*dt (not assumed) in every manifest/report.",
+  "dataset": "cylinder200",
+  "dt": 0.005,
+  "fn": 0.2,
+  "Tn_s": 5.0,
+  "seeds": [123, 456, 789],
+  "history_points": [
+    {"label": "0.5Tn", "seq_len": 500,  "nominal_duration_s": 2.5},
+    {"label": "1Tn",   "seq_len": 1000, "nominal_duration_s": 5.0},
+    {"label": "2Tn",   "seq_len": 2000, "nominal_duration_s": 10.0},
+    {"label": "4Tn",   "seq_len": 4000, "nominal_duration_s": 20.0}
+  ],
+  "not_yet_tested": [
+    {"label": "8Tn_placeholder", "seq_len": 8000, "nominal_duration_s": 40.0,
+     "note": "Prepared but disabled. Only add if 4Tn (20s) still shows improving validation closed-loop behavior -- mirrors the bridge 4Tn/20s gating rule."}
+  ],
+  "architecture_source": "manifests/study_manifest.json:selected_architecture.cylinder200 (Stage 1 winner; frozen before Stage 2 job generation)"
+}

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Environments and editor
+.venv/
+venv/
+env/
+.vscode/
+
+# Data and outputs are not versioned (see README, sections 4 and 10)
+data/
+results/
+logs/
+bsub_jobs/
+studies/*/results/
+studies/*/jobs/
+*.out
+*.log
+*.bsub
