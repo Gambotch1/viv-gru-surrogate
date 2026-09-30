@@ -4,8 +4,8 @@ Code for the master's thesis *"Machine Learning Surrogates for VIV Prediction"* 
 
 A recurrent neural network (GRU) learns the lift coefficient C_L from the recent motion of a structure. It then replaces the CFD solver inside a two-way coupled simulation: the GRU predicts the lift, a Newmark-β integrator moves the structure, and the new motion is fed back to the GRU. The method is tested on two cases:
 
-- a **circular cylinder** at Re = 200 (Leontini et al. benchmark), where the coupled surrogate reproduces the lock-in response (thesis Ch. 5);
-- a section of the **Rio–Niterói bridge deck**, where the open-loop predictions are accurate but the coupled response decays (thesis Ch. 6).
+- a **circular cylinder** at Re = 200 (Leontini et al. benchmark), where the coupled surrogate reproduces the lock-in response
+- a section of the **Rio–Niterói bridge deck**, where the open-loop predictions are accurate but the coupled response decays.
 
 The main lesson of the thesis is that open-loop accuracy does not guarantee a correct coupled response. Every model in this repository should therefore be judged in closed loop, with `evaluate_all.py`.
 
@@ -60,8 +60,8 @@ Two extra pieces are only used for the bridge:
 
 Two self-contained studies live in `studies/`:
 
-- `gru_architecture_history_sensitivity/`: network size and input-history length (Sec. 4.4.3, 5.2.1, Appendix C);
-- `cylinder_time_varying_ur/`: one continuous run with Ur changing in time (Sec. 5.7, Appendix F).
+- `gru_architecture_history_sensitivity/`: network size and input-history length
+- `cylinder_time_varying_ur/`: one continuous run with Ur changing in time.
 
 ---
 
